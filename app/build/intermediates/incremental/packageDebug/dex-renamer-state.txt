@@ -1,0 +1,7 @@
+#Mon Oct 02 19:58:44 PDT 2017
+base.0=/Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_84a531a2d995b59f5a8133b605a8ecdabda60acb
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=/Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_928bf6dd7fa9b3d1923cae8bec1c131a63420798/classes.dex
+base.1=/Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_928bf6dd7fa9b3d1923cae8bec1c131a63420798
+file.0=/Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_84a531a2d995b59f5a8133b605a8ecdabda60acb/classes.dex

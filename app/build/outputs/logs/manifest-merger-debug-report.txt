@@ -1,0 +1,154 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:2:1-47:12
+	package
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:2:11-57
+		INJECTED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml
+	android:versionName
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:5:11-36
+		INJECTED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml
+	android:versionCode
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:4:11-34
+		INJECTED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:3:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:7:5-66
+	android:name
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:7:22-64
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:8:5-80
+	android:name
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:8:22-78
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:9:5-78
+	android:name
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:9:22-76
+application
+ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:11:5-45:19
+MERGED from [com.android.support:design:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/c3cbde92160dcac982c1b179cdfef0ca45a98b22/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:transition:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/fcc0c40a83793dcc4f78fae52bda19e7f3d3666f/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/c2ff6a5cff4b60513f8ad887b4be77a9e75aa03a/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/c52f9873b7a9979314b3d4157ff40f0bad136898/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/34088ea5f5ba7d2e29ca4e94b8c3345956f7c78b/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-v4:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/488a60cfc79c0c68eed75903d7a9ef2293e4a282/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/908c772c0fef526b913a01dda3360abce2716491/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/f5ba267e708570dec2b9ec6cfe48949cc97e700c/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/60f6db7a9a30fac94e979fc2e3980e0e64a6f678/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/a16bf8a280b1640f332517b083a1b60f912f7f47/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-compat:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/ad044fd6ee0f10ebcd57d55de81487593d172763/output/AndroidManifest.xml:29:5-20
+MERGED from [com.github.Raizlabs.DBFlow:dbflow:4.0.3] /Users/alitsiya.yusupova/.android/build-cache/beaaafb32abe40de8887a87bb547cd142ebcc3c4/output/AndroidManifest.xml:11:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/alitsiya.yusupova/.android/build-cache/3eb54a998aa4be5d1031472e59376e184270ccdf/output/AndroidManifest.xml:9:5-20
+	android:label
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:15:9-41
+	android:allowBackup
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:13:9-35
+	android:icon
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:14:9-45
+	android:theme
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:16:9-40
+	android:name
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:12:9-35
+activity#com.codepath.apps.restclienttemplate.activities.LoginActivity
+ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:17:9-36:20
+	android:label
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:19:13-45
+	android:theme
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:20:13-44
+	android:name
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:18:13-53
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:21:13-25:29
+action#android.intent.action.MAIN
+ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:22:17-68
+	android:name
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:22:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:24:17-76
+	android:name
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:24:27-74
+intent-filter#android.intent.action.VIEW+android.intent.category.BROWSABLE+android.intent.category.DEFAULT
+ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:26:13-35:29
+action#android.intent.action.VIEW
+ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:27:17-68
+	android:name
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:27:25-66
+category#android.intent.category.DEFAULT
+ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:29:17-75
+	android:name
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:29:27-73
+category#android.intent.category.BROWSABLE
+ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:30:17-77
+	android:name
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:30:27-75
+data
+ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:32:17-34:61
+	android:host
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:33:21-55
+	android:scheme
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:34:21-59
+activity#com.codepath.apps.restclienttemplate.activities.TimelineActivity
+ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:37:9-38:20
+	android:name
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:37:19-62
+activity#com.codepath.apps.restclienttemplate.activities.ComposeActivity
+ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:39:9-40:20
+	android:name
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:39:19-61
+activity#com.codepath.apps.restclienttemplate.activities.TweetActivity
+ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:41:9-42:20
+	android:name
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:41:19-59
+activity#com.codepath.apps.restclienttemplate.activities.ProfileActivity
+ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:43:9-44:20
+	android:name
+		ADDED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml:43:19-61
+uses-sdk
+INJECTED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.codepath.libraries:android-oauth-handler:1.2.5] /Users/alitsiya.yusupova/.android/build-cache/9505daee345955e157bc7de50e831b857acb656d/output/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:design:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/c3cbde92160dcac982c1b179cdfef0ca45a98b22/output/AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:recyclerview-v7:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/817e7909ee2f8b638914e005b6e93029949518ec/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:transition:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/fcc0c40a83793dcc4f78fae52bda19e7f3d3666f/output/AndroidManifest.xml:20:5-44
+MERGED from [com.jakewharton:butterknife:8.4.0] /Users/alitsiya.yusupova/.android/build-cache/9c51a72f28b3b2c496c935f8367aa008d12bd4c3/output/AndroidManifest.xml:5:5-43
+MERGED from [jp.wasabeef:glide-transformations:3.0.1] /Users/alitsiya.yusupova/.android/build-cache/2e45459774497ee2ccefa9d59033a8430f42a7ee/output/AndroidManifest.xml:8:5-10:41
+MERGED from [com.google.dagger:dagger-android-support:2.11] /Users/alitsiya.yusupova/.android/build-cache/6e2614fb7354edac8a9e7b1d384f606fe730b1e7/output/AndroidManifest.xml:18:3-42
+MERGED from [com.google.dagger:dagger-android:2.11] /Users/alitsiya.yusupova/.android/build-cache/cdf2b6c42f73effe2d6a919974afa4d71bd5a033/output/AndroidManifest.xml:18:3-42
+MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/c2ff6a5cff4b60513f8ad887b4be77a9e75aa03a/output/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/c52f9873b7a9979314b3d4157ff40f0bad136898/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/34088ea5f5ba7d2e29ca4e94b8c3345956f7c78b/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/488a60cfc79c0c68eed75903d7a9ef2293e4a282/output/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/908c772c0fef526b913a01dda3360abce2716491/output/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/f5ba267e708570dec2b9ec6cfe48949cc97e700c/output/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/60f6db7a9a30fac94e979fc2e3980e0e64a6f678/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/a16bf8a280b1640f332517b083a1b60f912f7f47/output/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/ad044fd6ee0f10ebcd57d55de81487593d172763/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.github.Raizlabs.DBFlow:dbflow:4.0.3] /Users/alitsiya.yusupova/.android/build-cache/beaaafb32abe40de8887a87bb547cd142ebcc3c4/output/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/alitsiya.yusupova/.android/build-cache/3eb54a998aa4be5d1031472e59376e184270ccdf/output/AndroidManifest.xml:5:5-7:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/c3cbde92160dcac982c1b179cdfef0ca45a98b22/output/AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		INJECTED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:design:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/c3cbde92160dcac982c1b179cdfef0ca45a98b22/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:recyclerview-v7:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/817e7909ee2f8b638914e005b6e93029949518ec/output/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:transition:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/fcc0c40a83793dcc4f78fae52bda19e7f3d3666f/output/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/c2ff6a5cff4b60513f8ad887b4be77a9e75aa03a/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/c52f9873b7a9979314b3d4157ff40f0bad136898/output/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/34088ea5f5ba7d2e29ca4e94b8c3345956f7c78b/output/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-v4:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/488a60cfc79c0c68eed75903d7a9ef2293e4a282/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-fragment:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/908c772c0fef526b913a01dda3360abce2716491/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/f5ba267e708570dec2b9ec6cfe48949cc97e700c/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-ui:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/60f6db7a9a30fac94e979fc2e3980e0e64a6f678/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-utils:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/a16bf8a280b1640f332517b083a1b60f912f7f47/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-compat:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/ad044fd6ee0f10ebcd57d55de81487593d172763/output/AndroidManifest.xml:25:5-27:34
+	android:value
+		ADDED from [com.android.support:design:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/c3cbde92160dcac982c1b179cdfef0ca45a98b22/output/AndroidManifest.xml:27:9-31
+	android:name
+		ADDED from [com.android.support:design:25.3.1] /Users/alitsiya.yusupova/.android/build-cache/c3cbde92160dcac982c1b179cdfef0ca45a98b22/output/AndroidManifest.xml:26:9-47

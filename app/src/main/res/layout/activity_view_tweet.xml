@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_margin="5dp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivUserImage"
+        android:layout_width="@dimen/icon"
+        android:layout_height="@dimen/icon"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/ivUserImage"/>
+
+    <TextView
+        android:id="@+id/tvTweetTimeAgo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvTweetBody"
+        android:layout_alignParentEnd="true"/>
+
+    <TextView
+        android:id="@+id/tvTweetBody"
+        android:autoLink="all"
+        android:linksClickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:layout_below="@+id/tvName"
+        android:lines="3"
+        android:layout_toEndOf="@+id/ivUserImage"/>
+
+    <Button
+        android:id="@+id/btnReply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reply"
+        android:layout_below="@+id/tvTweetBody"/>
+
+    <EditText
+        android:id="@+id/etComposeReply"
+        android:layout_below="@id/btnReply"
+        android:visibility="gone"
+        android:hint="@string/compose_tweet_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lines="3"
+        />
+    <Button
+        android:id="@+id/btnSendReply"
+        android:visibility="gone"
+        android:layout_margin="@dimen/margin"
+        android:layout_below="@+id/etComposeReply"
+        android:text="@string/tweet_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/build/intermediates/res/merged/debug/drawable-xhdpi/ic_library_add_white_24dp.png",
+        "source": "/Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_library_add_white_24dp.png"
+    },
+    {
+        "merged": "/Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/build/intermediates/res/merged/debug/drawable-xhdpi/ic_person_white_24dp.png",
+        "source": "/Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_person_white_24dp.png"
+    },
+    {
+        "merged": "/Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/build/intermediates/res/merged/debug/drawable-xhdpi/ic_launcher.png",
+        "source": "/Users/alitsiya.yusupova/Projects/CodePath/4MyTweeets/app/src/main/res/drawable-xhdpi/ic_launcher.png"
+    }
+]
