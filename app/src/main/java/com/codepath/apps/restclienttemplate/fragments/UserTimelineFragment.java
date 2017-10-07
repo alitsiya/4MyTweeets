@@ -18,10 +18,11 @@ import javax.inject.Inject;
 
 public class UserTimelineFragment extends TweetsListFragment {
 
+    private static String mScreenName;
     @Inject TwitterClient mClient;
-    @Inject SharedPreferences mSharedPreferences;
 
     public static UserTimelineFragment newInstance(String screenName) {
+        mScreenName = screenName;
         UserTimelineFragment userTimelineFragment = new UserTimelineFragment();
         Bundle args = new Bundle();
         args.putString("screen_name", screenName);
@@ -46,8 +47,7 @@ public class UserTimelineFragment extends TweetsListFragment {
             //populate timeline from DB
 //            addItemsFromDB();
         }
-        String userScreenName = mSharedPreferences.getString("screen_name", null);
-        mClient.getUserTimeline(userScreenName, new JsonHttpResponseHandler() {
+        mClient.getUserTimeline(mScreenName, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
             }

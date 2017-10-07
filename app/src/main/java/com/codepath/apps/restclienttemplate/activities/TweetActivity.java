@@ -82,4 +82,11 @@ public class TweetActivity extends AppCompatActivity {
         }
         finish();
     }
+
+    @OnClick(R.id.ivUserImage)
+    public void onIconClick() {
+        Intent i = new Intent(this, ProfileActivity.class);
+        i.putExtra("user", Parcels.wrap(mTweet.user));
+        startActivity(i);
+    }
 }

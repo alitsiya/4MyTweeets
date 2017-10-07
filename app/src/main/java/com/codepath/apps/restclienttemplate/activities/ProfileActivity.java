@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -18,15 +18,11 @@ import com.codepath.apps.restclienttemplate.fragments.UserTimelineFragment;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.codepath.apps.restclienttemplate.models.User;
 import com.codepath.apps.restclienttemplate.network.TwitterClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.parceler.Parcels;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cz.msebera.android.httpclient.Header;
 
 import javax.inject.Inject;
 
@@ -35,6 +31,7 @@ public class ProfileActivity extends AppCompatActivity implements TweetsListFrag
     private final int REPLY_TWEET_REQUEST = 1;
     @Inject TwitterClient mClient;
     private Context mContext;
+    private User mUser;
 
     @BindView(R.id.ivProfileImage) ImageView ivProfileImage;
     @BindView(R.id.tvUserName) TextView tvUserName;
@@ -51,34 +48,28 @@ public class ProfileActivity extends AppCompatActivity implements TweetsListFrag
         ((TwitterApp) getApplication()).getTwitterComponent().inject(this);
 
         mContext = this;
-        String screenName = getIntent().getStringExtra("screen_name");
-        UserTimelineFragment userTimelineFragment = UserTimelineFragment.newInstance(screenName);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        mUser = Parcels.unwrap(getIntent().getParcelableExtra("user"));
+        toolbar.setTitle("@" + mUser.screenName);
+        UserTimelineFragment userTimelineFragment = UserTimelineFragment.newInstance(mUser.screenName);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
         ft.replace(R.id.flContainer, userTimelineFragment);
         ft.commit();
 
-        mClient.getUserInfo(new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                try {
-                    User user = User.fromJSON(response);
-                    Glide.with(mContext).load(user.profileImageUrl)
-                        .apply(RequestOptions.circleCropTransform())
-                        .into(ivProfileImage);
-                    tvUserName.setText(user.name);
-                    tvTagLine.setText(user.description);
-                    String followersCount = String.valueOf(user.followers) + " followers";
-                    String followingCount = String.valueOf(user.following) + " following";
-                    tvFollowers.setText(followersCount);
-                    tvFollowing.setText(followingCount);
-                } catch (JSONException e) {
-                    Toast.makeText(mContext, "Error retrieving User profile", Toast.LENGTH_SHORT).show();
-                    e.printStackTrace();
-                }
-            }
-        });
+        Glide.with(mContext).load(mUser.profileImageUrl)
+            .apply(RequestOptions.circleCropTransform())
+            .into(ivProfileImage);
+        tvUserName.setText(mUser.name);
+        tvTagLine.setText(mUser.description);
+        String followersCount = String.valueOf(mUser.followers) + " followers";
+        String followingCount = String.valueOf(mUser.following) + " following";
+        tvFollowers.setText(followersCount);
+        tvFollowing.setText(followingCount);
     }
+
     @Override
     public void onTweetSelected(Tweet tweet) {
         Intent i = new Intent(this, TweetActivity.class);

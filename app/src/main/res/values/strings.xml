@@ -11,5 +11,6 @@
     <string name="tweet_size">140</string>
     <string name="reply">Reply</string>
     <string name="item">Item</string>
+    <string name="user_profile">User Profile</string>
 
 </resources>

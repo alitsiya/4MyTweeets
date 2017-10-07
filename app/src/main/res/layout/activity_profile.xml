@@ -3,10 +3,23 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.codepath.apps.restclienttemplate.activities.ProfileActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        app:title="@string/user_profile"
+        android:layout_height="?attr/actionBarSize"
+        app:titleTextColor="@android:color/white"
+        android:background="#313131">
+    </android.support.v7.widget.Toolbar>
+
     <RelativeLayout
+        android:layout_below="@+id/toolbar"
         android:id="@+id/rlUserHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -49,6 +62,7 @@
         android:id="@+id/llCounts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_medium"
         android:layout_below="@+id/rlUserHeader"
         android:layout_marginBottom="@dimen/margin_medium">
 
@@ -64,12 +78,19 @@
             android:layout_marginLeft="@dimen/margin_medium"/>
 
     </LinearLayout>
-
+    <LinearLayout
+        android:id="@+id/llDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/llCounts"
+        android:background="#d4d4d4"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"/>
     <FrameLayout
         android:id="@+id/flContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/llCounts"
+        android:layout_below="@+id/llDivider"
         android:layout_alignParentStart="true"
         android:layout_marginTop="@dimen/margin_medium"/>
 </RelativeLayout>
