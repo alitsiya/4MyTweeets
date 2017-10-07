@@ -1,7 +1,6 @@
 package com.codepath.apps.restclienttemplate.fragments;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
@@ -33,7 +32,7 @@ public class UserTimelineFragment extends TweetsListFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        populateUserTimeline();
+        populateUserTimeline(0L);
     }
 
     @Override
@@ -42,16 +41,22 @@ public class UserTimelineFragment extends TweetsListFragment {
         ((TwitterApp) context.getApplicationContext()).getTwitterComponent().inject(this);
     }
 
-    private void populateUserTimeline() {
+    @Override
+    public void onScroll(Long lastTweetId) {
+        populateUserTimeline(lastTweetId);
+    }
+
+    @Override
+    public void onSwipeRefresh() {
+        populateUserTimeline(0L);
+    }
+
+    private void populateUserTimeline(long lastTweetId) {
         if (!mNetworkUtil.isNetworkAvailable()) {
-            //populate timeline from DB
+            // TODO populate timeline from DB
 //            addItemsFromDB();
         }
-        mClient.getUserTimeline(mScreenName, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-            }
-
+        mClient.getUserTimeline(mScreenName, lastTweetId, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 addItems(response);

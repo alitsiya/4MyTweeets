@@ -1,5 +1,6 @@
 package com.codepath.apps.restclienttemplate.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.R;
 import com.codepath.apps.restclienttemplate.adapters.TweetAdapter;
@@ -18,13 +20,10 @@ import com.codepath.apps.restclienttemplate.models.TweetModel;
 import com.codepath.apps.restclienttemplate.network.TwitterClient;
 import com.codepath.apps.restclienttemplate.utils.EndlessRecyclerViewScrollListener;
 import com.codepath.apps.restclienttemplate.utils.NetworkUtil;
-import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import cz.msebera.android.httpclient.Header;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +41,7 @@ public class TweetsListFragment extends Fragment implements TweetAdapter.TweetAd
     private LinearLayoutManager mLinearLayoutManager;
     private SwipeRefreshLayout swipeContainer;
     private EndlessRecyclerViewScrollListener mScrollListener;
+    private Context mContext;
 
     public interface TweetSelectedListener {
         void onTweetSelected(Tweet tweet);
@@ -63,11 +63,14 @@ public class TweetsListFragment extends Fragment implements TweetAdapter.TweetAd
             DividerItemDecoration.VERTICAL);
         rvTweets.addItemDecoration(dividerItemDecoration);
 
+        mContext = getContext();
         mScrollListener = new EndlessRecyclerViewScrollListener(mLinearLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 if (mNetworkUtil.isNetworkAvailable()) {
-                    populateHomeTimeline(tweets.get(tweets.size() - 1).uid);
+                    onScroll(tweets.get(tweets.size() - 1).uid);
+                } else {
+                    Toast.makeText(mContext, "Network is not available", Toast.LENGTH_SHORT).show();
                 }
             }
         };
@@ -77,11 +80,23 @@ public class TweetsListFragment extends Fragment implements TweetAdapter.TweetAd
             @Override
             public void onRefresh() {
                 tweetAdapter.clear();
-                populateHomeTimeline(0L);
                 swipeContainer.setRefreshing(false);
+                onSwipeRefresh();
             }
         });
         return v;
+    }
+
+    @Override
+    public void onItemSelected(View view, int position) {
+        Tweet tweet = tweets.get(position);
+        ((TweetSelectedListener) getActivity()).onTweetSelected(tweet);
+    }
+
+    public void onScroll(Long lastTweetId) {
+    }
+
+    public void onSwipeRefresh() {
     }
 
     public void addItems(JSONArray response) {
@@ -108,11 +123,11 @@ public class TweetsListFragment extends Fragment implements TweetAdapter.TweetAd
             tweets.add(0, tweet);
             tweetAdapter.notifyItemInserted(0);
             mLinearLayoutManager.scrollToPositionWithOffset(0, 0);
-            // Save TweetModel to DB
-            if (TweetModel.byId(tweet.uid) == null) {
-                TweetModel tweetModel = new TweetModel(response);
-                tweetModel.save();
-            }
+            // TODO Save TweetModel to DB
+//            if (TweetModel.byId(tweet.uid) == null) {
+//                TweetModel tweetModel = new TweetModel(response);
+//                tweetModel.save();
+//            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -125,40 +140,5 @@ public class TweetsListFragment extends Fragment implements TweetAdapter.TweetAd
             tweets.add(tweet);
             tweetAdapter.notifyItemInserted(tweets.size() - 1);
         }
-    }
-
-    @Override
-    public void onItemSelected(View view, int position) {
-        Tweet tweet = tweets.get(position);
-        ((TweetSelectedListener) getActivity()).onTweetSelected(tweet);
-    }
-
-    private void populateHomeTimeline(long sinceId) {
-        if (!mNetworkUtil.isNetworkAvailable()) {
-            //populate timeline from DB
-            addItemsFromDB();
-        }
-        mClient.getHomeTimeline(new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                // if got response delete data in DB to refresh
-                addItems(response);
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                throwable.printStackTrace();
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-                throwable.printStackTrace();
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                throwable.printStackTrace();
-            }
-        }, sinceId);
     }
 }

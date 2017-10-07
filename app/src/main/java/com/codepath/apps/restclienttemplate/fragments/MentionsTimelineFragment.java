@@ -33,19 +33,20 @@ public class MentionsTimelineFragment extends TweetsListFragment {
         ((TwitterApp) context.getApplicationContext()).getTwitterComponent().inject(this);;
     }
 
-    private void populateMentionsTimeline(long sinceId) {
-        if (!mNetworkUtil.isNetworkAvailable()) {
-            //populate timeline from DB
-//            addItemsFromDB();
-        }
-        mClient.getMentionsTimeline(new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-            }
+    @Override
+    public void onSwipeRefresh() {
+        populateMentionsTimeline(0L);
+    }
 
+    @Override
+    public void onScroll(Long lastTweetId) {
+        populateMentionsTimeline(lastTweetId);
+    }
+
+    private void populateMentionsTimeline(long sinceId) {
+        mClient.getMentionsTimeline(sinceId, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                // if got response delete data in DB to refresh
                 addItems(response);
             }
 
@@ -63,6 +64,6 @@ public class MentionsTimelineFragment extends TweetsListFragment {
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 throwable.printStackTrace();
             }
-        }, sinceId);
+        });
     }
 }

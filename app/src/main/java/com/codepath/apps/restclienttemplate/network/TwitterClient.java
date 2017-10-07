@@ -43,7 +43,7 @@ public class TwitterClient extends OAuthBaseClient {
 						context.getString(R.string.intent_scheme), context.getPackageName(), FALLBACK_URL));
 	}
 
-	public void getHomeTimeline(AsyncHttpResponseHandler handler, long maxId) {
+	public void getHomeTimeline(long maxId, AsyncHttpResponseHandler handler) {
 		String apiUrl = getApiUrl("statuses/home_timeline.json");
 		// Can specify query string params directly or through RequestParams.
 		RequestParams params = new RequestParams();
@@ -54,23 +54,26 @@ public class TwitterClient extends OAuthBaseClient {
 		client.get(apiUrl, params, handler);
 	}
 
-	public void getMentionsTimeline(AsyncHttpResponseHandler handler, long maxId) {
+	public void getMentionsTimeline(long maxId, AsyncHttpResponseHandler handler) {
 		String apiUrl = getApiUrl("statuses/mentions_timeline.json");
 		// Can specify query string params directly or through RequestParams.
 		RequestParams params = new RequestParams();
-		params.put("count", 20);
+		params.put("count", 10);
 		if (maxId != 0L) {
-			params.put("max_id", maxId);
+			params.put("max_id", maxId - 1);
 		}
 		client.get(apiUrl, params, handler);
 	}
 
-	public void getUserTimeline(String screenName, AsyncHttpResponseHandler handler) {
+	public void getUserTimeline(String screenName, long maxId, AsyncHttpResponseHandler handler) {
 		String apiUrl = getApiUrl("statuses/user_timeline.json");
 		// Can specify query string params directly or through RequestParams.
 		RequestParams params = new RequestParams();
 		params.put("screen_name", screenName);
-		params.put("count", 20);
+		params.put("count", 10);
+		if (maxId != 0L) {
+			params.put("max_id", maxId - 1);
+		}
 		client.get(apiUrl, params, handler);
 	}
 

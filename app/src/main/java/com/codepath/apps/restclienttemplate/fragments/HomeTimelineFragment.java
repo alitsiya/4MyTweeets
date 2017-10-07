@@ -38,6 +38,16 @@ public class HomeTimelineFragment extends TweetsListFragment {
     }
 
     @Override
+    public void onScroll(Long lastTweetId) {
+        populateHomeTimeline(lastTweetId);
+    }
+
+    @Override
+    public void onSwipeRefresh() {
+        populateHomeTimeline(0L);
+    }
+
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REPLY_TWEET_REQUEST) {
             if (resultCode == RESULT_OK) {
@@ -52,46 +62,35 @@ public class HomeTimelineFragment extends TweetsListFragment {
     }
 
     private void submitTweet(String tweet, Long replyId) {
-        if (mNetworkUtil.isNetworkAvailable()) {
-            mClient.submitTweet(tweet, replyId, new JsonHttpResponseHandler() {
-                @Override
-                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                    addItem(response);
-                }
-                @Override
-                public void onFailure(int statusCode, Header[] headers, Throwable throwable,
-                    JSONObject errorResponse)
-                {
-                }
-                @Override
-                public void onFailure(int statusCode, Header[] headers, Throwable throwable,
-                    JSONArray errorResponse)
-                {
-                }
-                @Override
-                public void onFailure(int statusCode, Header[] headers, String responseString,
-                    Throwable throwable)
-                {
-                }
-                @Override
-                public void onSuccess(int statusCode, Header[] headers, String responseString) {
-                }
-            });
-        }
+        mClient.submitTweet(tweet, replyId, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                addItem(response);
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable,
+                JSONObject errorResponse)
+            {
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable,
+                JSONArray errorResponse)
+            {
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString,
+                Throwable throwable)
+            {
+            }
+        });
     }
 
     private void populateHomeTimeline(long sinceId) {
-        if (!mNetworkUtil.isNetworkAvailable()) {
-            //populate timeline from DB
-            addItemsFromDB();
-        }
-        mClient.getHomeTimeline(new JsonHttpResponseHandler() {
+        mClient.getHomeTimeline(sinceId, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                // if got response delete data in DB to refresh
                 addItems(response);
             }
-
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 throwable.printStackTrace();
@@ -106,6 +105,6 @@ public class HomeTimelineFragment extends TweetsListFragment {
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 throwable.printStackTrace();
             }
-        }, sinceId);
+        });
     }
 }

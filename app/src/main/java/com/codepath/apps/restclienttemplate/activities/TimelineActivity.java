@@ -79,6 +79,7 @@ public class TimelineActivity extends AppCompatActivity implements TweetsListFra
         Intent i = new Intent(this, ComposeActivity.class);
         startActivity(i);
     }
+
     @Override
     public void onTweetSelected(Tweet tweet) {
         Intent i = new Intent(this, TweetActivity.class);
