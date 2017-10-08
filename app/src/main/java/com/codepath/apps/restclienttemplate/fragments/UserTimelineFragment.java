@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.codepath.apps.restclienttemplate.TwitterApp;
+import com.codepath.apps.restclienttemplate.models.TweetModel;
 import com.codepath.apps.restclienttemplate.network.TwitterClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -12,6 +13,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -53,8 +56,8 @@ public class UserTimelineFragment extends TweetsListFragment {
 
     private void populateUserTimeline(long lastTweetId) {
         if (!mNetworkUtil.isNetworkAvailable()) {
-            // TODO populate timeline from DB
-//            addItemsFromDB();
+            List<TweetModel> tweetModelList = TweetModel.byUser(mScreenName);
+            addItemsFromDB(tweetModelList);
         }
         mClient.getUserTimeline(mScreenName, lastTweetId, new JsonHttpResponseHandler() {
             @Override

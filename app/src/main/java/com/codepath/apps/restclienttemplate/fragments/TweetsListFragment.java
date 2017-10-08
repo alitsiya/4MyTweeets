@@ -12,7 +12,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.R;
 import com.codepath.apps.restclienttemplate.adapters.TweetAdapter;
@@ -36,8 +35,8 @@ public class TweetsListFragment extends Fragment implements TweetAdapter.TweetAd
     @Inject NetworkUtil mNetworkUtil;
     @Inject TwitterClient mClient;
 
-    private TweetAdapter tweetAdapter;
-    private ArrayList<Tweet> tweets;
+    private ArrayList<Tweet> tweets = new ArrayList<>();
+    private TweetAdapter tweetAdapter = new TweetAdapter(tweets, this);
     private RecyclerView rvTweets;
     private LinearLayoutManager mLinearLayoutManager;
     private SwipeRefreshLayout swipeContainer;
@@ -55,7 +54,6 @@ public class TweetsListFragment extends Fragment implements TweetAdapter.TweetAd
         View v = inflater.inflate(R.layout.fragments_tweets_list, container, false);
         rvTweets = (RecyclerView) v.findViewById(R.id.rvTweet);
         swipeContainer = (SwipeRefreshLayout) v.findViewById(R.id.swipeContainer);
-        tweets = new ArrayList<>();
         tweetAdapter = new TweetAdapter(tweets, this);
         mLinearLayoutManager = new LinearLayoutManager(getContext());
         rvTweets.setLayoutManager(mLinearLayoutManager);
@@ -70,8 +68,6 @@ public class TweetsListFragment extends Fragment implements TweetAdapter.TweetAd
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 if (mNetworkUtil.isNetworkAvailable()) {
                     onScroll(tweets.get(tweets.size() - 1).uid);
-                } else {
-                    Toast.makeText(mContext, "Network is not available", Toast.LENGTH_SHORT).show();
                 }
             }
         };
@@ -106,12 +102,12 @@ public class TweetsListFragment extends Fragment implements TweetAdapter.TweetAd
                 Tweet tweet = Tweet.fromJSON(response.getJSONObject(i));
                 tweets.add(tweet);
                 tweetAdapter.notifyItemInserted(tweets.size() - 1);
+                mLinearLayoutManager.scrollToPositionWithOffset(0, 0);
                 // Save TweetModel if not in DB
-                //TODO
-//                if (TweetModel.byId(tweet.uid) == null) {
-//                    TweetModel tweetModel = new TweetModel(response.getJSONObject(i));
-//                    tweetModel.save();
-//                }
+                if (TweetModel.byId(tweet.uid) == null) {
+                    TweetModel tweetModel = new TweetModel(response.getJSONObject(i));
+                    tweetModel.save();
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -124,20 +120,19 @@ public class TweetsListFragment extends Fragment implements TweetAdapter.TweetAd
             tweets.add(0, tweet);
             tweetAdapter.notifyItemInserted(0);
             mLinearLayoutManager.scrollToPositionWithOffset(0, 0);
-            // TODO Save TweetModel to DB
-//            if (TweetModel.byId(tweet.uid) == null) {
-//                TweetModel tweetModel = new TweetModel(response);
-//                tweetModel.save();
-//            }
+            // Save TweetModel if not in DB
+            if (TweetModel.byId(tweet.uid) == null) {
+                TweetModel tweetModel = new TweetModel(response);
+                tweetModel.save();
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
-    public void addItemsFromDB() {
-        List<TweetModel> tweetModelList = TweetModel.orderByDate();
-        for (int i = 0; i < tweetModelList.size(); i++) {
-            Tweet tweet = Tweet.fromDB(tweetModelList.get(i));
+    public void addItemsFromDB(List<TweetModel> listOfTweets) {
+        for (int i = 0; i < listOfTweets.size(); i++) {
+            Tweet tweet = Tweet.fromDB(listOfTweets.get(i));
             tweets.add(tweet);
             tweetAdapter.notifyItemInserted(tweets.size() - 1);
         }

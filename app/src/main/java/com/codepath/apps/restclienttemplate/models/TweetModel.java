@@ -36,9 +36,6 @@ public class TweetModel extends BaseModel {
 	@Column private long userUid;
 	@Column private String screenName;
 	@Column private String profileImageUrl;
-	@Column private int followers;
-	@Column private int following;
-	@Column private String description;
 
 	public TweetModel() {
 		super();
@@ -57,9 +54,6 @@ public class TweetModel extends BaseModel {
 			this.userUid = user.uid;
 			this.screenName = user.screenName;
 			this.profileImageUrl = user.profileImageUrl;
-			this.followers = user.followers;
-			this.following = user.following;
-			this.description = user.description;
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -87,15 +81,6 @@ public class TweetModel extends BaseModel {
 	public String getProfileImageUrl() {
 		return profileImageUrl;
 	}
-	public int getFollowers() {
-		return followers;
-	}
-	public int getFollowing() {
-		return following;
-	}
-	public String getDescription() {
-		return description;
-	}
 	// Setters
 	public void setBody(String body) {
 		this.body = body;
@@ -118,15 +103,6 @@ public class TweetModel extends BaseModel {
 	public void setProfileImageUrl(String profileImageUrl) {
 		this.profileImageUrl = profileImageUrl;
 	}
-	public void setFollowers(int followers) {
-		this.followers = followers;
-	}
-	public void setFollowing(int following) {
-		this.following = following;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
 
 	/* The where class in this code below will be marked red until you first compile the project, since the code 
 	 * for the SampleModel_Table class is generated at compile-time.
@@ -138,10 +114,30 @@ public class TweetModel extends BaseModel {
 	}
 
 	public static List<TweetModel> orderByDate() {
-		return new Select().from(TweetModel.class).orderBy(OrderBy.fromProperty(TweetModel_Table.createdAt)).queryList();
+		return new Select().from(TweetModel.class).orderBy(OrderBy.fromProperty(TweetModel_Table.uid)).queryList();
 	}
 
 	public static List<TweetModel> recentItems() {
 		return new Select().from(TweetModel.class).orderBy(TweetModel_Table.id, false).limit(300).queryList();
+	}
+
+	//Returns tweets containing a users’s @screen_name
+	public static List<TweetModel> byMentions(String screenName) {
+		return new Select()
+			.from(TweetModel.class)
+			.where(TweetModel_Table.body.like("%" + screenName + "%"))
+			.orderBy(TweetModel_Table.id, false)
+			.limit(20)
+			.queryList();
+	}
+
+	//Returns tweets posted by the user indicated by the screen_name
+	public static List<TweetModel> byUser(String screenName) {
+		return new Select()
+			.from(TweetModel.class)
+			.where(TweetModel_Table.screenName.like("%" + screenName + "%"))
+			.orderBy(TweetModel_Table.id, false)
+			.limit(50)
+			.queryList();
 	}
 }

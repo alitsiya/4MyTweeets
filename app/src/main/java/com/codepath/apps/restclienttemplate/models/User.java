@@ -35,9 +35,9 @@ public class User {
         user.uid = tweetModel.getUserUid();
         user.screenName = tweetModel.getScreenName();
         user.profileImageUrl = tweetModel.getProfileImageUrl();
-        user.followers = tweetModel.getFollowers();
-        user.following = tweetModel.getFollowing();
-        user.description = tweetModel.getDescription();
+        user.followers = -1; // TODO
+        user.following = -1;
+        user.description = "Unknown";
         return user;
     }
 }

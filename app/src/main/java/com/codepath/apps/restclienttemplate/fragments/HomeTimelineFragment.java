@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.codepath.apps.restclienttemplate.TwitterApp;
+import com.codepath.apps.restclienttemplate.models.TweetModel;
 import com.codepath.apps.restclienttemplate.network.TwitterClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -14,6 +15,7 @@ import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -81,6 +83,10 @@ public class HomeTimelineFragment extends TweetsListFragment {
     }
 
     private void populateHomeTimeline(long sinceId) {
+        if (!mNetworkUtil.isNetworkAvailable()) {
+            List<TweetModel> tweetModelList = TweetModel.orderByDate();
+            addItemsFromDB(tweetModelList);
+        }
         mClient.getHomeTimeline(sinceId, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
