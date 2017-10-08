@@ -4,17 +4,33 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.R;
+import com.codepath.apps.restclienttemplate.TwitterApp;
+import com.codepath.apps.restclienttemplate.models.User;
 import com.codepath.apps.restclienttemplate.network.TwitterClient;
 import com.codepath.oauth.OAuthLoginActionBarActivity;
+import com.loopj.android.http.JsonHttpResponseHandler;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import cz.msebera.android.httpclient.Header;
+
+import javax.inject.Inject;
 
 public class LoginActivity extends OAuthLoginActionBarActivity<TwitterClient> {
+
+	@Inject TwitterClient mClient;
+	public static User user;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+
+		((TwitterApp) getApplication()).getTwitterComponent().inject(this);
 	}
 
 
@@ -29,6 +45,17 @@ public class LoginActivity extends OAuthLoginActionBarActivity<TwitterClient> {
 	// i.e Display application "homepage"
 	@Override
 	public void onLoginSuccess() {
+		mClient.getUserInfo(new JsonHttpResponseHandler() {
+			@Override
+			public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+				try {
+					user = User.fromJSON(response);
+				} catch (JSONException e) {
+					Toast.makeText(getApplicationContext(), "Error retrieving User profile", Toast.LENGTH_SHORT).show();
+					e.printStackTrace();
+				}
+			}
+		});
 		 Intent i = new Intent(this, TimelineActivity.class);
 		 startActivity(i);
 	}

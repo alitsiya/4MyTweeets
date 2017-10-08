@@ -102,7 +102,6 @@ public class TweetsListFragment extends Fragment implements TweetAdapter.TweetAd
                 Tweet tweet = Tweet.fromJSON(response.getJSONObject(i));
                 tweets.add(tweet);
                 tweetAdapter.notifyItemInserted(tweets.size() - 1);
-                mLinearLayoutManager.scrollToPositionWithOffset(0, 0);
                 // Save TweetModel if not in DB
                 if (TweetModel.byId(tweet.uid) == null) {
                     TweetModel tweetModel = new TweetModel(response.getJSONObject(i));

@@ -14,7 +14,7 @@ import dagger.Provides;
 
 import javax.inject.Singleton;
 
-import static com.codepath.apps.restclienttemplate.TwitterApp.user;
+import static com.codepath.apps.restclienttemplate.activities.LoginActivity.user;
 
 @Module
 public class TwitterModule {

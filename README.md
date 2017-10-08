@@ -46,9 +46,8 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<a href="https://www.dropbox.com/s/wjm0qsy3kqw818r/device-2017-10-08-104252.mp4?dl=0">Link to DropBox</a>
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
