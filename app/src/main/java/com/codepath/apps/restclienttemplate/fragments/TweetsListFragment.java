@@ -1,6 +1,7 @@
 package com.codepath.apps.restclienttemplate.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -140,5 +141,10 @@ public class TweetsListFragment extends Fragment implements TweetAdapter.TweetAd
             tweets.add(tweet);
             tweetAdapter.notifyItemInserted(tweets.size() - 1);
         }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

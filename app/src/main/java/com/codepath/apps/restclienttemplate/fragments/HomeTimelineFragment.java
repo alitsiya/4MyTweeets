@@ -17,17 +17,15 @@ import cz.msebera.android.httpclient.Header;
 
 import javax.inject.Inject;
 
-import static android.app.Activity.RESULT_OK;
 
 public class HomeTimelineFragment extends TweetsListFragment {
 
     @Inject TwitterClient mClient;
 
-    static final int REPLY_TWEET_REQUEST = 2;
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         populateHomeTimeline(0L);
     }
 
@@ -49,16 +47,13 @@ public class HomeTimelineFragment extends TweetsListFragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REPLY_TWEET_REQUEST) {
-            if (resultCode == RESULT_OK) {
-                String tweet = data.getStringExtra("result");
-                Long uid = data.getLongExtra("uid", 0L);
-                if (uid == 0L) {
-                    uid = null;
-                }
-                submitTweet(tweet, uid);
-            }
+        super.onActivityResult(requestCode, resultCode, data);
+        String tweet = data.getStringExtra("result");
+        Long uid = data.getLongExtra("uid", 0L);
+        if (uid == 0L) {
+            uid = null;
         }
+        submitTweet(tweet, uid);
     }
 
     private void submitTweet(String tweet, Long replyId) {

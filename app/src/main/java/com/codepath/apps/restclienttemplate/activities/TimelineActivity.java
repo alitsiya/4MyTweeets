@@ -1,21 +1,20 @@
 package com.codepath.apps.restclienttemplate.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.codepath.apps.restclienttemplate.R;
 import com.codepath.apps.restclienttemplate.TwitterApp;
+import com.codepath.apps.restclienttemplate.fragments.HomeTimelineFragment;
 import com.codepath.apps.restclienttemplate.fragments.TweetsListFragment;
 import com.codepath.apps.restclienttemplate.fragments.TweetsPagerAdapter;
 import com.codepath.apps.restclienttemplate.models.Tweet;
@@ -29,11 +28,14 @@ import org.parceler.Parcels;
 
 import cz.msebera.android.httpclient.Header;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 public class TimelineActivity extends AppCompatActivity implements TweetsListFragment.TweetSelectedListener {
 
     private final int REPLY_TWEET_REQUEST = 1;
+    static final int COMPOSE_TWEET_REQUEST = 2;
     @Inject TwitterClient mClient;
     private Context mContext;
     User user;
@@ -77,7 +79,7 @@ public class TimelineActivity extends AppCompatActivity implements TweetsListFra
 
     public void onComposeClicked(MenuItem item) {
         Intent i = new Intent(this, ComposeActivity.class);
-        startActivity(i);
+        startActivityForResult(i, COMPOSE_TWEET_REQUEST);
     }
 
     @Override
@@ -85,5 +87,21 @@ public class TimelineActivity extends AppCompatActivity implements TweetsListFra
         Intent i = new Intent(this, TweetActivity.class);
         i.putExtra("tweet", Parcels.wrap(tweet));
         startActivityForResult(i, REPLY_TWEET_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == COMPOSE_TWEET_REQUEST || requestCode == REPLY_TWEET_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                @SuppressLint("RestrictedApi") List<Fragment> fragments = getSupportFragmentManager().getFragments();
+                if (fragments != null) {
+                    for (Fragment fragment : fragments) {
+                        if(fragment instanceof HomeTimelineFragment) {
+                            fragment.onActivityResult(requestCode, resultCode, data);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
