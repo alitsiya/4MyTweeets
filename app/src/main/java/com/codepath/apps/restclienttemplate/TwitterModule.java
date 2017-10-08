@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.codepath.apps.restclienttemplate.models.User;
 import com.codepath.apps.restclienttemplate.network.TwitterClient;
 import com.codepath.apps.restclienttemplate.utils.NetworkUtil;
 
@@ -12,6 +13,8 @@ import dagger.Module;
 import dagger.Provides;
 
 import javax.inject.Singleton;
+
+import static com.codepath.apps.restclienttemplate.TwitterApp.user;
 
 @Module
 public class TwitterModule {
@@ -42,5 +45,10 @@ public class TwitterModule {
     @Provides
     NetworkUtil providesNetworkUtil() {
         return new NetworkUtil(context);
+    }
+
+    @Provides
+    User providesUser() {
+        return user;
     }
 }

@@ -34,7 +34,7 @@ public class HomeTimelineFragment extends TweetsListFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        ((TwitterApp) context.getApplicationContext()).getTwitterComponent().inject(this);;
+        ((TwitterApp) context.getApplicationContext()).getTwitterComponent().inject(this);
     }
 
     @Override

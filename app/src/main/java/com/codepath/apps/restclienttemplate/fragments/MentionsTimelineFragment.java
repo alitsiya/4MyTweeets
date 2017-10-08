@@ -1,7 +1,6 @@
 package com.codepath.apps.restclienttemplate.fragments;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
@@ -22,7 +21,6 @@ import javax.inject.Inject;
 public class MentionsTimelineFragment extends TweetsListFragment {
 
     @Inject TwitterClient mClient;
-    @Inject SharedPreferences mSharedPreferences;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,7 +31,7 @@ public class MentionsTimelineFragment extends TweetsListFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        ((TwitterApp) context.getApplicationContext()).getTwitterComponent().inject(this);;
+        ((TwitterApp) context.getApplicationContext()).getTwitterComponent().inject(this);
     }
 
     @Override
@@ -48,8 +46,7 @@ public class MentionsTimelineFragment extends TweetsListFragment {
 
     private void populateMentionsTimeline(long sinceId) {
         if (!mNetworkUtil.isNetworkAvailable()) {
-            String screenName = mSharedPreferences.getString("screen_name", null);
-            List<TweetModel> tweetModelList = TweetModel.byMentions(screenName);
+            List<TweetModel> tweetModelList = TweetModel.byMentions(null); //TODO
             addItemsFromDB(tweetModelList);
         }
         mClient.getMentionsTimeline(sinceId, new JsonHttpResponseHandler() {
